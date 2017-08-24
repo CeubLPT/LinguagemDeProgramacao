@@ -5,19 +5,28 @@
  */
 package Estante;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Alexandre.Torres
  */
 public class Estante {
     private int numero;
-    private Livro[] livros = new Livro[10];
+    private ArrayList<Livro> livros = new ArrayList<>();
     private int ultimaPosicao = 0;
     
     public void adiciona(Livro l){
-       livros[ ultimaPosicao++ ] = l;
-       
+       livros.add( l );       
     }
+    
+    public void retira( Livro l){
+        livros.remove(l);
+    }
+
+    public void retira( int indice ){
+        livros.remove(indice-1);
+    }    
     public int getNumero() {
         return numero;
     }
@@ -26,20 +35,21 @@ public class Estante {
         this.numero = numero;
     }
 
-    public Livro[] getLivros() {
+    public ArrayList getLivros() {
         return livros;
     }
 
-    public void setLivros(Livro[] livros) {
+    public void setLivros(ArrayList livros) {
         this.livros = livros;
     }
     
+    @Override
     public String toString(){
         String texto = "Estante: " + getNumero()+"\n";
-        
+        int cont = 0;
         for (Livro l:livros)
             if (l != null)
-                texto += l.getTitulo() + "\n";
+                texto += ++cont + ") " + l + "\n";
         
         return texto;
     }

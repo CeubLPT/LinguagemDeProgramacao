@@ -5,6 +5,8 @@
  */
 package Estante;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Alexandre.Torres
@@ -12,29 +14,28 @@ package Estante;
 public class Controle {
     public static void main(String[] args) {
                
-        Livro l = new Livro();
-        l.setTitulo("Harry Potter e o cálice de fogo");
-        l.setPaginas(1400);
-        l.setEdicao(38);
+        Livro l = new Livro( "Harry Potter e o cálice de fogo",
+                            38,
+                            1400                            
+                            );
 
-        Livro l1 = new Livro();
-        l1.setTitulo("Harry Potter e prisioneiro de Azkaban");
-        l1.setPaginas(1400);
-        l1.setEdicao(38);
-        
-        Livro l2 = new Livro();
-        l2.setTitulo("Harry Potter e a pedra filosofal");
-        l2.setPaginas(1400);
-        l2.setEdicao(38);
         
         Estante e = new Estante();
         e.setNumero(1);
         e.adiciona(l);
-        e.adiciona(l1);
-        e.adiciona(l2);
+        e.adiciona( new Livro("Misthburn", 2,600));
+        e.adiciona( new Livro("Eramos seis", 20, 203));
+        e.adiciona( new Livro("Escaravelho do diabo", 2,160));
         
         System.out.println( e );
         
+        System.out.println("Qual livro você quer remover?");
+        System.out.println("De 1 a " + e.getLivros().size());
+        Scanner teclado = new Scanner(System.in);
+        int indice = teclado.nextInt();
         
+        e.retira(indice);
+        
+        System.out.println( e);
     }
 }

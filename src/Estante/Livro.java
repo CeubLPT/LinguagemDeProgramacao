@@ -14,6 +14,11 @@ class Livro {
     private int edicao;
     private int paginas;
 
+    public Livro(String titulo, int edicao, int paginas){
+        this.titulo = titulo;
+        this.edicao = edicao;
+        this.paginas = paginas;
+    }
     /**
      * @return the titulo
      */
@@ -56,4 +61,13 @@ class Livro {
         this.paginas = paginas;
     }
     
+    @Override
+    public String toString(){
+        String txt = getTitulo() + " - ";
+        txt += getEdicao() + " ed. - ";
+        txt += getPaginas() + " pgs";
+        
+        return txt;
+           
+    }
 }
